@@ -18,7 +18,7 @@ import Producto from "../components/Producto";
 // Opción adicional (Reto): muestra todos los productos sin filtrar
 const TODOS = { id: 0, nombre: "Todos", icono: "apps-outline" };
 
-const Catalogo = () => {
+const CatalogoScreen = ({ navigation }) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
@@ -165,7 +165,7 @@ const Catalogo = () => {
         <FlatList
           style={styles.contenedor}
           data={productosFiltrados}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => String(item.id)}
           numColumns={2}
           columnWrapperStyle={styles.columnas}
           showsVerticalScrollIndicator={false}
@@ -178,6 +178,9 @@ const Catalogo = () => {
               tiempo={item.tiempo}
               color={item.color}
               imagen={item.imagen}
+              onPress={() =>
+                navigation.navigate("DetalleProducto", { producto: item })
+              }
             />
           )}
           ListEmptyComponent={
@@ -268,4 +271,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Catalogo;
+export default CatalogoScreen;

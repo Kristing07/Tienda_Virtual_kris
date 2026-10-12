@@ -4,7 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Producto = (props) => {
   return (
-    <View style={styles.tarjeta}>
+    <TouchableOpacity
+      style={styles.tarjeta}
+      onPress={props.onPress}
+      activeOpacity={0.8}
+    >
 
       <View style={[styles.contenedorImagen, { backgroundColor: props.color }]}>
         <Image source={{ uri: props.imagen }} style={styles.imagen} />
@@ -29,7 +33,7 @@ const Producto = (props) => {
 
       </View>
 
-    </View>
+    </TouchableOpacity>
   );
 };
 
